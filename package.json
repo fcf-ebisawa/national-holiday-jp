@@ -1,8 +1,8 @@
 {
-  "name": "<package-name>",
+  "name": "@fcf-ebisawa/national-holiday-jp",
   "repository": {
     "type": "git",
-    "url": "<repository-url>"
+    "url": "https://github.com/fcf-ebisawa/national-holiday-jp"
   },
   "version": "0.0.0",
   "type": "module",
@@ -14,11 +14,6 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/es/index.js",
       "require": "./dist/cjs/index.cjs"
-    },
-    "./sum": {
-      "types": "./dist/types/sum/index.d.ts",
-      "import": "./dist/es/sum/index.js",
-      "require": "./dist/cjs/sum/index.cjs"
     }
   },
   "main": "./dist/cjs/index.cjs",
@@ -26,7 +21,7 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "build": "vite build && tsc",
-    "test": "vitest",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
