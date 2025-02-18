@@ -19,11 +19,30 @@ export class NationalHolidayJp {
   /** シングルトンインスタンス */
   static instance?: NationalHolidayJp;
 
+  private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24時間
+
   /**
    * 祝日データを保持するオブジェクト
    * キーは日付（YYYY-MM-DD形式）、値は祝日名
    */
   private holidays: Record<string, string> = {};
+
+  private lastFetched: Date = new Date();
+
+  /**
+   * データを再取得する
+   * @throws {Error} ネットワークエラーやCSVパース時のエラー
+   */
+  async refresh(): Promise<void> {
+    await this.fetchNationalHolidayJpData();
+  }
+
+  /**
+   * データの最終更新日時を取得する
+   */
+  getLastUpdated(): Date | null {
+    return this.lastFetched;
+  }
 
   /** プライベートコンストラクタ - 直接のインスタンス化を防ぐ */
   private constructor() {}
@@ -54,6 +73,9 @@ export class NationalHolidayJp {
       },
       {} as Record<string, string>,
     );
+
+    // データ取得後に最終更新日時を設定
+    this.lastFetched = new Date();
   }
 
   /**
@@ -67,11 +89,18 @@ export class NationalHolidayJp {
    * ```
    */
   static async getInstance(): Promise<NationalHolidayJp> {
-    if (!NationalHolidayJp.instance) {
+    if (!NationalHolidayJp.instance || NationalHolidayJp.shouldRefreshCache()) {
       NationalHolidayJp.instance = new NationalHolidayJp();
       await NationalHolidayJp.instance.fetchNationalHolidayJpData();
     }
     return NationalHolidayJp.instance;
+  }
+
+  private static shouldRefreshCache(): boolean {
+    if (!NationalHolidayJp.instance) return true;
+    const now = new Date();
+    const elapsed = now.getTime() - NationalHolidayJp.instance.lastFetched.getTime();
+    return elapsed > NationalHolidayJp.CACHE_DURATION;
   }
 
   /**
