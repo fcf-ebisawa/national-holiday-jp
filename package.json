@@ -1,8 +1,8 @@
 {
-  "name": "<package-name>",
+  "name": "@fcf/national-holiday-jp",
   "repository": {
     "type": "git",
-    "url": "<repository-url>"
+    "url": "https://github.com/fcf-ebisawa/national-holiday-jp"
   },
   "version": "0.0.0",
   "type": "module",
@@ -26,7 +26,7 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "build": "vite build && tsc",
-    "test": "vitest",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
