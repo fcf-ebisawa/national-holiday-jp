@@ -14,11 +14,6 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/es/index.js",
       "require": "./dist/cjs/index.cjs"
-    },
-    "./sum": {
-      "types": "./dist/types/sum/index.d.ts",
-      "import": "./dist/es/sum/index.js",
-      "require": "./dist/cjs/sum/index.cjs"
     }
   },
   "main": "./dist/cjs/index.cjs",
