@@ -41,7 +41,13 @@ export const getHoliday = async (date: number | string | Date): Promise<string |
   const holidayJp = await NationalHolidayJp.getInstance();
   const holidays = holidayJp.getHolidays();
 
-  return holidays[date.toISOString().split('T')[0]!.replace(/-/g, '/')];
+  const str = date.toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
+
+  return holidays[str];
 };
 
 /**

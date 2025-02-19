@@ -55,7 +55,7 @@ export class NationalHolidayJp {
     const res = await fetch(NATIONAL_HOLIDAY_JP_DATA_URL);
     const buffer = await res.arrayBuffer();
 
-    const decoder = new TextDecoder();
+    const decoder = new TextDecoder('sjis');
     const csv = decoder.decode(buffer);
 
     const lines = csv
@@ -65,7 +65,7 @@ export class NationalHolidayJp {
 
     this.holidays = lines.reduce(
       (acc, line) => {
-        const [date, name] = line.split(',');
+        const [date, name] = line.trim().split(',');
         if (date && name) {
           acc[date] = name;
         }
@@ -88,6 +88,8 @@ export class NationalHolidayJp {
    * ```
    */
   static async getInstance(): Promise<NationalHolidayJp> {
+    console.log('here');
+
     if (!NationalHolidayJp.instance || NationalHolidayJp.shouldRefreshCache()) {
       NationalHolidayJp.instance = new NationalHolidayJp();
       await NationalHolidayJp.instance.fetchNationalHolidayJpData();
