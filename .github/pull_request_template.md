@@ -1,36 +1,36 @@
-## 変更の種類
+## Type of Change
 
-- [ ] バグ修正 (破壊的でない変更)
-- [ ] 新機能 (破壊的でない変更)
-- [ ] 破壊的変更 (既存の機能に影響を与える修正・機能)
-- [ ] ドキュメントのみの変更
+- [ ] Bug fix (non-breaking change)
+- [ ] New feature (non-breaking change)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Documentation update
 
-## 変更内容
+## Description
 
-この PR で何が変更されるのかを明確に説明してください。
+Please provide a clear and concise description of what changes are being made.
 
-## 関連する Issue
+## Related Issue
 
-関連する Issue 番号を記載してください（例: #123）
+Please link to the issue this PR addresses (e.g., #123)
 
-## 動作確認方法
+## Testing Steps
 
-変更の動作を確認する手順を記載してください：
+Steps to test the changes:
 
 1.
 2.
 3.
 
-## チェックリスト
+## Checklist
 
-- [ ] テストを追加または更新しました
-- [ ] ドキュメントを更新しました（必要な場合）
-- [ ] コードレビューを依頼しました
-- [ ] すべてのテストが成功することを確認しました
-- [ ] 破壊的変更の場合、その内容と移行手順をドキュメントに記載しました
+- [ ] I have added or updated tests
+- [ ] I have updated the documentation (if necessary)
+- [ ] I have requested code review
+- [ ] All tests are passing
+- [ ] For breaking changes, I have documented the changes and migration steps
 
-## スクリーンショット（必要な場合）
+## Screenshots (if applicable)
 
-## 追加のコンテキスト
+## Additional Context
 
-レビュアーが理解するために必要な追加情報があれば記載してください。
+Add any other context about the PR that would help reviewers understand the changes.

@@ -1,39 +1,39 @@
 ---
-name: バグ報告
-about: バグ報告用のテンプレート
+name: Bug Report
+about: Create a report to help us improve
 title: '[BUG] '
 labels: bug
 assignees: ''
 ---
 
-## バグの説明
+## Bug Description
 
-バグの内容を明確かつ簡潔に説明してください。
+A clear and concise description of what the bug is.
 
-## 再現手順
+## Steps to Reproduce
 
-バグを再現するための手順:
+Steps to reproduce the behavior:
 
-1. '...' に移動
-2. '....' をクリック
-3. '....' までスクロール
-4. エラーを確認
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
-## 期待される動作
+## Expected Behavior
 
-本来期待される動作を明確に説明してください。
+A clear and concise description of what you expected to happen.
 
-## スクリーンショット
+## Screenshots
 
-可能であれば、問題を説明するためのスクリーンショットを追加してください。
+If applicable, add screenshots to help explain your problem.
 
-## 環境情報
+## Environment
 
-- OS: [例: Windows 10]
-- Node.jsバージョン: [例: 14.17.0]
-- npm/yarnバージョン: [例: npm 6.14.13]
-- ライブラリバージョン: [例: v1.0.0]
+- OS: [e.g., Windows 10]
+- Node.js Version: [e.g., 14.17.0]
+- npm/yarn Version: [e.g., npm 6.14.13]
+- Library Version: [e.g., v1.0.0]
 
-## 追加のコンテキスト
+## Additional Context
 
-問題に関する他の情報があれば追加してください。
+Add any other context about the problem here.

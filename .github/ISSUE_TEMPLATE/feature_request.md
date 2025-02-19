@@ -1,23 +1,23 @@
 ---
-name: 機能リクエスト
-about: このプロジェクトへのアイデアの提案
+name: Feature Request
+about: Suggest an idea for this project
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
 ---
 
-## 関連する問題
+## Related Problem
 
-この機能リクエストは問題に関連していますか？説明してください。
+Is your feature request related to a problem? Please describe.
 
-## 解決策の提案
+## Proposed Solution
 
-実現したい解決策を明確に説明してください。
+A clear and concise description of what you want to happen.
 
-## 検討した代替案
+## Considered Alternatives
 
-検討した他の代替案や機能について説明してください。
+A clear and concise description of any alternative solutions or features you've considered.
 
-## 追加のコンテキスト
+## Additional Context
 
-機能リクエストに関する他のコンテキストやスクリーンショットを追加してください。
+Add any other context or screenshots about the feature request here.
