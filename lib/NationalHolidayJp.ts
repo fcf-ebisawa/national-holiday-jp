@@ -88,8 +88,6 @@ export class NationalHolidayJp {
    * ```
    */
   static async getInstance(): Promise<NationalHolidayJp> {
-    console.log('here');
-
     if (!NationalHolidayJp.instance || NationalHolidayJp.shouldRefreshCache()) {
       NationalHolidayJp.instance = new NationalHolidayJp();
       await NationalHolidayJp.instance.fetchNationalHolidayJpData();
