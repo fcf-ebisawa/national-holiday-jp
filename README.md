@@ -1,43 +1,43 @@
 # national-holiday-jp
 
-日本の祝日を取得するためのシンプルなnpmパッケージです。
+A simple npm package for retrieving Japanese national holidays.
 
-## 機能
+## Features
 
-- 🗓 日本の祝日の判定と取得
-- 📅 指定期間内の祝日一覧の取得
-- ⚡️ 軽量で依存関係のない実装
-- 🎯 TypeScriptによる型安全性
-- ✅ Vitestによる完全なテストカバレッジ
+- 🗓 Check and retrieve Japanese national holidays
+- 📅 Get a list of holidays within a specified period
+- ⚡️ Lightweight implementation with no dependencies
+- 🎯 Type safety with TypeScript
+- ✅ Complete test coverage with Vitest
 
-## インストール
+## Installation
 
 ```bash
-npm install national-holiday-jp
+npm install @fcf-ebisawa/national-holiday-jp
 ```
 
-## 使用方法
+## Usage
 
 ### ES Modules
 
 ```typescript
-import { isHoliday, getHoliday, betweenHoliday } from 'national-holiday-jp';
+import { isHoliday, getHoliday, betweenHoliday } from '@fcf-ebisawa/national-holiday-jp';
 
-// 指定日が祝日かどうかを判定
+// Check if a date is a holiday
 const result = await isHoliday('2024-01-01');
 if (result.isHoliday) {
-  console.log(result.name); // '元日'
-  console.log(result.date); // 2024-01-01のDateオブジェクト
+  console.log(result.name); // 'New Year's Day'
+  console.log(result.date); // Date object for 2024-01-01
 }
 
-// 指定日の祝日名を取得
-const holidayName = await getHoliday('2024-01-01'); // '元日'
+// Get holiday name for a specific date
+const holidayName = await getHoliday('2024-01-01'); // 'New Year's Day'
 
-// 指定期間の祝日一覧を取得
+// Get a list of holidays within a period
 const holidays = await betweenHoliday('2024-01-01', '2024-12-31');
 // [
-//   { date: Date('2024-01-01'), name: '元日' },
-//   { date: Date('2024-01-08'), name: '成人の日' },
+//   { date: Date('2024-01-01'), name: 'New Year's Day' },
+//   { date: Date('2024-01-08'), name: 'Coming of Age Day' },
 //   ...
 // ]
 ```
@@ -45,85 +45,85 @@ const holidays = await betweenHoliday('2024-01-01', '2024-12-31');
 ### CommonJS
 
 ```javascript
-const { isHoliday, getHoliday, betweenHoliday } = require('national-holiday-jp');
+const { isHoliday, getHoliday, betweenHoliday } = require('@fcf-ebisawa/national-holiday-jp');
 
-// 以下、ES Modulesと同様の使用方法（async/awaitを使用）
+// Same usage as ES Modules (using async/await)
 ```
 
 ## API
 
 ### `isHoliday(date: number | string | Date): Promise<IsHolidayResult>`
 
-指定された日付が祝日かどうかを判定します。
+Determines if the specified date is a holiday.
 
-- 戻り値: 祝日の場合は`{ isHoliday: true, name: string, date: Date }`
-- 祝日でない場合は`{ isHoliday: false }`
+- Returns: `{ isHoliday: true, name: string, date: Date }` if it's a holiday
+- Returns: `{ isHoliday: false }` if it's not a holiday
 
 ### `getHoliday(date: number | string | Date): Promise<string | undefined>`
 
-指定された日付の祝日名を返します。祝日でない場合は`undefined`を返します。
+Returns the holiday name for the specified date. Returns `undefined` if the date is not a holiday.
 
 ### `betweenHoliday(start: number | string | Date, end: number | string | Date): Promise<Array<{ date: Date; name: string }>>`
 
-指定された期間内の祝日一覧を返します。
+Returns a list of holidays within the specified period.
 
-## 日付形式
+## Date Formats
 
-以下の形式の日付を受け付けます：
+Accepts dates in the following formats:
 
-- `Date`オブジェクト: `new Date('2024-01-01')`
-- 日付文字列: `'2024-01-01'`
-- タイムスタンプ: `1704067200000`
+- `Date` object: `new Date('2024-01-01')`
+- Date string: `'2024-01-01'`
+- Timestamp: `1704067200000`
 
-## 開発
+## Development
 
-1. 依存関係のインストール
+1. Install dependencies
 
 ```bash
 npm install
 ```
 
-2. テストの実行
+2. Run tests
 
 ```bash
-npm test                 # テストの実行
-npm run test:coverage   # カバレッジレポートの生成
+npm test                 # Run tests
+npm run test:coverage   # Generate coverage report
 ```
 
-3. ビルド
+3. Build
 
 ```bash
 npm run build
 ```
 
-## パッケージの構造
+## Package Structure
 
 ```
 .
-├── lib/                    # ソースコード
-│   ├── index.ts           # メインエントリーポイント
-│   ├── NationalHolidayJp.ts  # メインクラス
-│   └── *.spec.ts          # テストファイル
-└── dist/                  # ビルド出力（自動生成）
+├── lib/                    # Source code
+│   ├── index.ts           # Main entry point
+│   ├── NationalHolidayJp.ts  # Main class
+│   └── *.spec.ts          # Test files
+└── dist/                  # Build output (auto-generated)
     ├── es/               # ES Modules
     ├── cjs/              # CommonJS
-    └── types/            # 型定義ファイル
+    └── types/            # Type definitions
 ```
 
-## ライセンス
+## License
 
-このパッケージは[Apache-2.0ライセンス](LICENSE)の下で公開されています。
+This package is released under the [Apache-2.0 License](LICENSE).
 
-### 祝日データについて
+### About Holiday Data
 
-本パッケージで使用している祝日データは、[内閣府の祝日データ](https://data.e-gov.go.jp/data/dataset/cao_20190522_0002/resource/d9ad35a5-6c9c-4127-bdbe-aa138fdffe42)を使用しています。このデータは[CC-BYライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)の下で提供されています。
+The holiday data used in this package is sourced from the [Cabinet Office of Japan's holiday data](https://data.e-gov.go.jp/data/dataset/cao_20190522_0002/resource/d9ad35a5-6c9c-4127-bdbe-aa138fdffe42), which is provided under the [CC-BY license](https://creativecommons.org/licenses/by/4.0/).
 
-使用データ: 昭和30年（1955年）から令和2年（2020年）国民の祝日等（いわゆる振替休日等を含む）
-提供: 内閣府
+Data used: National holidays from 1955 to 2020 (including substitute holidays)
+Source: Cabinet Office of Japan
 
-## 貢献
+## Contributing
 
-バグ報告や機能要望は[GitHubのIssue](https://github.com/yourusername/national-holiday-jp/issues)にお願いします。
-プルリクエストも歓迎です。
+Please report bugs and feature requests in [GitHub Issues](https://github.com/yourusername/national-holiday-jp/issues).
+Pull requests are welcome.
 
 ---

@@ -1,10 +1,10 @@
 import { NationalHolidayJp } from './NationalHolidayJp';
 
 /**
- * 日付の型を統一してDate型に変換する内部ヘルパー関数
- * @param date - 変換する日付（数値、文字列、またはDate型）
- * @returns 変換後のDate型オブジェクト
- * @throws {Error} 無効な日付形式の場合
+ * Internal helper function to convert date to Date type
+ * @param date - Date to convert (number, string, or Date)
+ * @returns Converted Date object
+ * @throws {Error} If date format is invalid
  * @internal
  */
 const toDate = (date: number | string | Date): Date => {
@@ -21,19 +21,19 @@ const toDate = (date: number | string | Date): Date => {
 };
 
 /**
- * 指定された日付の祝日名を取得する
- * @param date - 確認したい日付（数値、文字列、またはDate型）
- * @returns 祝日名。祝日でない場合はundefined
+ * Get the holiday name for a specified date
+ * @param date - Date to check (number, string, or Date)
+ * @returns Holiday name if the date is a holiday, undefined otherwise
  *
  * @example
  * ```typescript
- * // 日付文字列を使用
+ * // Using date string
  * const holiday1 = await getHoliday('2024-01-01');
- * console.log(holiday1); // "元日"
+ * console.log(holiday1); // "New Year's Day"
  *
- * // Date型を使用
+ * // Using Date object
  * const holiday2 = await getHoliday(new Date('2024-01-01'));
- * console.log(holiday2); // "元日"
+ * console.log(holiday2); // "New Year's Day"
  * ```
  */
 export const getHoliday = async (date: number | string | Date): Promise<string | undefined> => {
@@ -45,17 +45,17 @@ export const getHoliday = async (date: number | string | Date): Promise<string |
 };
 
 /**
- * 指定された日付が祝日かどうかを判定する
- * @param date - 確認したい日付（数値、文字列、またはDate型）
- * @returns 祝日の場合は{isHoliday: true, name: string, date: Date}、
- *          祝日でない場合は{isHoliday: false}
+ * Check if a specified date is a holiday
+ * @param date - Date to check (number, string, or Date)
+ * @returns If holiday: {isHoliday: true, name: string, date: Date}
+ *          If not holiday: {isHoliday: false}
  *
  * @example
  * ```typescript
  * const result = await isHoliday('2024-01-01');
  * if (result.isHoliday) {
- *   console.log(result.name); // "元日"
- *   console.log(result.date); // 2024-01-01のDateオブジェクト
+ *   console.log(result.name); // "New Year's Day"
+ *   console.log(result.date); // Date object for 2024-01-01
  * }
  * ```
  */
@@ -71,7 +71,7 @@ export const isHoliday = async (date: number | string | Date): Promise<IsHoliday
 };
 
 /**
- * 祝日判定の戻り値の型定義
+ * Type definition for isHoliday function return value
  * @internal
  */
 type IsHolidayResult =
@@ -85,10 +85,10 @@ type IsHolidayResult =
     };
 
 /**
- * 指定された期間内の祝日を全て取得する
- * @param start - 期間の開始日（数値、文字列、またはDate型）
- * @param end - 期間の終了日（数値、文字列、またはDate型）
- * @returns 祝日の配列。各要素は{name: string, date: Date}の形式
+ * Get all holidays within the specified period
+ * @param start - Start date of the period (number, string, or Date)
+ * @param end - End date of the period (number, string, or Date)
+ * @returns Array of holidays. Each element is in the format {name: string, date: Date}
  *
  * @example
  * ```typescript
@@ -122,7 +122,7 @@ export const betweenHoliday = async (
 };
 
 /**
- * betweenHoliday関数の戻り値の型定義
+ * Type definition for betweenHoliday function return value
  * @internal
  */
 type BetweenHolidayResult = {

@@ -1,13 +1,13 @@
 /**
- * 内閣府の祝日CSVデータのURL
+ * URL for the Cabinet Office's holiday CSV data
  * @see {@link https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv}
  */
 const NATIONAL_HOLIDAY_JP_DATA_URL = 'https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv';
 
 /**
- * 日本の祝日情報を取得・管理するクラス
+ * Class for retrieving and managing Japanese national holiday information
  * @remarks
- * このクラスはシングルトンパターンを実装しており、`getInstance()`メソッドを通じてのみインスタンス化できます。
+ * This class implements the singleton pattern and can only be instantiated through the `getInstance()` method.
  *
  * @example
  * ```typescript
@@ -16,40 +16,40 @@ const NATIONAL_HOLIDAY_JP_DATA_URL = 'https://www8.cao.go.jp/chosei/shukujitsu/s
  * ```
  */
 export class NationalHolidayJp {
-  /** シングルトンインスタンス */
+  /** Singleton instance */
   static instance?: NationalHolidayJp;
 
-  private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24時間
+  private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
   /**
-   * 祝日データを保持するオブジェクト
-   * キーは日付（YYYY-MM-DD形式）、値は祝日名
+   * Object holding holiday data
+   * Keys are dates (YYYY-MM-DD format), values are holiday names
    */
   private holidays: Record<string, string> = {};
 
   private lastFetched: Date = new Date();
 
   /**
-   * データを再取得する
-   * @throws {Error} ネットワークエラーやCSVパース時のエラー
+   * Refresh the holiday data
+   * @throws {Error} Network or CSV parsing errors
    */
   async refresh(): Promise<void> {
     await this.fetchNationalHolidayJpData();
   }
 
   /**
-   * データの最終更新日時を取得する
+   * Get the last update timestamp
    */
   getLastUpdated(): Date | null {
     return this.lastFetched;
   }
 
-  /** プライベートコンストラクタ - 直接のインスタンス化を防ぐ */
+  /** Private constructor - prevents direct instantiation */
   private constructor() {}
 
   /**
-   * 内閣府のWebサイトから祝日データを取得し、解析する
-   * @throws {Error} ネットワークエラーやCSVパース時のエラー
+   * Fetch and parse holiday data from the Cabinet Office website
+   * @throws {Error} Network or CSV parsing errors
    */
   private async fetchNationalHolidayJpData(): Promise<void> {
     const res = await fetch(NATIONAL_HOLIDAY_JP_DATA_URL);
@@ -74,14 +74,13 @@ export class NationalHolidayJp {
       {} as Record<string, string>,
     );
 
-    // データ取得後に最終更新日時を設定
     this.lastFetched = new Date();
   }
 
   /**
-   * NationalHolidayJpのインスタンスを取得する
-   * @returns シングルトンインスタンス
-   * @throws {Error} データ取得時にエラーが発生した場合
+   * Get an instance of NationalHolidayJp
+   * @returns Singleton instance
+   * @throws {Error} If data fetching fails
    *
    * @example
    * ```typescript
@@ -104,13 +103,13 @@ export class NationalHolidayJp {
   }
 
   /**
-   * 取得済みの祝日データを返す
-   * @returns 祝日データを含むオブジェクト。キーは日付（YYYY-MM-DD形式）、値は祝日名
+   * Return the fetched holiday data
+   * @returns Object containing holiday data. Keys are dates (YYYY-MM-DD format), values are holiday names
    *
    * @example
    * ```typescript
    * const holidays = holidayJp.getHolidays();
-   * console.log(holidays['2024-01-01']); // "元日"
+   * console.log(holidays['2024-01-01']); // "New Year's Day"
    * ```
    */
   getHolidays(): Record<string, string> {
